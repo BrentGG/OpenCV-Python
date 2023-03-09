@@ -20,7 +20,7 @@ if __name__ == '__main__':
     meatballSpawnDelay = 1
     meatballMaxSpawnRate = 3
     meatballSpawned = time.time()
-    meatBallRadius = int(screensize[1] / 100)
+    meatBallRadius = int(screensize[1] / 54)
     meatBallMinSpeed = int(screensize[1] / 54)
     meatBallMaxSpeed = int(screensize[1] / 36)
     firstDetection = False
@@ -61,7 +61,7 @@ if __name__ == '__main__':
                 x, y = meatballs[i].getPosition()
                 r = meatballs[i].getRadius()
                 # Detect if meatball has been eaten
-                if firstDetection and y >= my and y <= my + mh * 2 and x - r >= mx and x + r <= mx + mw:
+                if firstDetection and my <= y <= my + mh * 2 and mx <= x <= mx + mw:
                     score += 1 if meatballs[i].isGood() else -1
                     meatballs.pop(i)
                     i -= 1
@@ -71,17 +71,17 @@ if __name__ == '__main__':
                         meatballs.pop(i)
                         i -= 1
                     else:
-                        img = cv.circle(img, (x, y), r, (0, 255, 0) if meatballs[i].isGood() else (0, 0, 255), cv.FILLED)
+                        img = cv.circle(img, (x, y), r, (14, 37, 93) if meatballs[i].isGood() else (0, 85, 56), cv.FILLED)
                 i += 1
             img = cv.putText(img, "Score: " + str(score), (10, 30), cv.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 6)
             img = cv.putText(img, "Score: " + str(score), (10, 30), cv.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 0), 2)
         else:
-            textSize, _ = cv.getTextSize("Game Over", cv.FONT_HERSHEY_SIMPLEX, 4, 12)
-            img = cv.putText(img, "Game Over", (int(len(img[0]) / 2) - int(textSize[0] / 2), int(len(img) / 2) - 100), cv.FONT_HERSHEY_SIMPLEX, 4, (255, 255, 255), 12)
-            img = cv.putText(img, "Game Over", (int(len(img[0]) / 2) - int(textSize[0] / 2), int(len(img) / 2) - 100), cv.FONT_HERSHEY_SIMPLEX, 4, (0, 0, 0), 8)
-            textSize, _ = cv.getTextSize("Score: " + str(score), cv.FONT_HERSHEY_SIMPLEX, 4, 12)
-            img = cv.putText(img, "Score: " + str(score), (int(len(img[0]) / 2) - int(textSize[0] / 2), int(len(img) / 2) + 100), cv.FONT_HERSHEY_SIMPLEX, 4, (255, 255, 255), 12)
-            img = cv.putText(img, "Score: " + str(score), (int(len(img[0]) / 2) - int(textSize[0] / 2), int(len(img) / 2) + 100), cv.FONT_HERSHEY_SIMPLEX, 4, (0, 0, 0), 8)
+            textSize, _ = cv.getTextSize("Game Over", cv.FONT_HERSHEY_SIMPLEX, 2, 8)
+            img = cv.putText(img, "Game Over", (int(len(img[0]) / 2) - int(textSize[0] / 2), int(len(img) / 2) - 50), cv.FONT_HERSHEY_SIMPLEX, 2, (255, 255, 255), 8)
+            img = cv.putText(img, "Game Over", (int(len(img[0]) / 2) - int(textSize[0] / 2), int(len(img) / 2) - 50), cv.FONT_HERSHEY_SIMPLEX, 2, (0, 0, 0), 4)
+            textSize, _ = cv.getTextSize("Score: " + str(score), cv.FONT_HERSHEY_SIMPLEX, 2, 8)
+            img = cv.putText(img, "Score: " + str(score), (int(len(img[0]) / 2) - int(textSize[0] / 2), int(len(img) / 2) + 50), cv.FONT_HERSHEY_SIMPLEX, 2, (255, 255, 255), 8)
+            img = cv.putText(img, "Score: " + str(score), (int(len(img[0]) / 2) - int(textSize[0] / 2), int(len(img) / 2) + 50), cv.FONT_HERSHEY_SIMPLEX, 2, (0, 0, 0), 4)
 
         if time.time() - meatballSpawned > meatballSpawnDelay:
             for i in range(random.randint(1, meatballMaxSpawnRate)):
