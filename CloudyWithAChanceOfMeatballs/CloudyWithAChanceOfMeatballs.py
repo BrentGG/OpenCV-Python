@@ -23,7 +23,7 @@ if __name__ == '__main__':
     screensize = user32.GetSystemMetrics(0), user32.GetSystemMetrics(1)
 
     # Get video capture
-    cap = cv.VideoCapture(1)
+    cap = cv.VideoCapture(1)  # Change to 0 to use the built-in camera
     if not cap.isOpened():
         print("Could not open camera")
         exit(-1)
