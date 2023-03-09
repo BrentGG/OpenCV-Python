@@ -70,13 +70,15 @@ if __name__ == '__main__':
                     else:
                         img = cv.circle(img, (x, y), r, (0, 255, 0) if meatballs[i].isGood() else (0, 0, 255), cv.FILLED)
                 i += 1
-            img = cv.putText(img, "Score: " + str(score), (10, 30), cv.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 3)
+            img = cv.putText(img, "Score: " + str(score), (10, 30), cv.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 6)
             img = cv.putText(img, "Score: " + str(score), (10, 30), cv.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 0), 2)
         else:
-            img = cv.putText(img, "Game Over", (int(len(img[0]) / 2) - 350, int(len(img) / 2) - 100), cv.FONT_HERSHEY_SIMPLEX, 4, (255, 255, 255), 12)
-            img = cv.putText(img, "Game Over", (int(len(img[0]) / 2) - 350, int(len(img) / 2) - 100), cv.FONT_HERSHEY_SIMPLEX, 4, (0, 0, 0), 8)
-            img = cv.putText(img, "Score: " + str(score), (int(len(img[0]) / 2) - 300, int(len(img) / 2) + 100), cv.FONT_HERSHEY_SIMPLEX, 4, (255, 255, 255), 12)
-            img = cv.putText(img, "Score: " + str(score), (int(len(img[0]) / 2) - 300, int(len(img) / 2) + 100), cv.FONT_HERSHEY_SIMPLEX, 4, (0, 0, 0), 8)
+            textSize, _ = cv.getTextSize("Game Over", cv.FONT_HERSHEY_SIMPLEX, 4, 12)
+            img = cv.putText(img, "Game Over", (int(len(img[0]) / 2) - int(textSize[0] / 2), int(len(img) / 2) - 100), cv.FONT_HERSHEY_SIMPLEX, 4, (255, 255, 255), 12)
+            img = cv.putText(img, "Game Over", (int(len(img[0]) / 2) - int(textSize[0] / 2), int(len(img) / 2) - 100), cv.FONT_HERSHEY_SIMPLEX, 4, (0, 0, 0), 8)
+            textSize, _ = cv.getTextSize("Score: " + str(score), cv.FONT_HERSHEY_SIMPLEX, 4, 12)
+            img = cv.putText(img, "Score: " + str(score), (int(len(img[0]) / 2) - int(textSize[0] / 2), int(len(img) / 2) + 100), cv.FONT_HERSHEY_SIMPLEX, 4, (255, 255, 255), 12)
+            img = cv.putText(img, "Score: " + str(score), (int(len(img[0]) / 2) - int(textSize[0] / 2), int(len(img) / 2) + 100), cv.FONT_HERSHEY_SIMPLEX, 4, (0, 0, 0), 8)
 
         if time.time() - meatballSpawned > meatballSpawnDelay:
             for i in range(random.randint(1, meatballMaxSpawnRate)):
