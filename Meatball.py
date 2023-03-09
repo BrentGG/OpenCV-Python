@@ -9,7 +9,7 @@ class Meatball:
         self.x = random.randint(0 + self.radius, width - self.radius)
         self.y = self.radius
         self.good = random.choice([True, False])
-        self.speed = random.randint(5, 10)
+        self.speed = random.randint(20, 30)
 
     def move(self):
         self.y += self.speed
