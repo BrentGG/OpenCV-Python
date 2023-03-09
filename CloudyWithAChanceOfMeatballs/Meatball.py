@@ -2,14 +2,14 @@ import random
 
 
 class Meatball:
-    radius = 10
     remove = False
 
-    def __init__(self, width):
-        self.x = random.randint(0 + self.radius, width - self.radius)
+    def __init__(self, spawnWidth, radius, minSpeed, maxSpeed):
+        self.radius = radius
+        self.x = random.randint(0 + self.radius, spawnWidth - self.radius)
         self.y = self.radius
         self.good = random.choice([True, False])
-        self.speed = random.randint(20, 30)
+        self.speed = random.randint(minSpeed, maxSpeed)
 
     def move(self):
         self.y += self.speed

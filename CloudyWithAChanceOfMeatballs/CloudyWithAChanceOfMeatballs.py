@@ -7,6 +7,11 @@ import random
 from Meatball import Meatball
 
 if __name__ == '__main__':
+    # Get screen info
+    user32 = ctypes.windll.user32
+    user32.SetProcessDPIAware()
+    screensize = user32.GetSystemMetrics(0), user32.GetSystemMetrics(1)
+
     # Game data
     duration = 60
     start = time.time()
@@ -15,12 +20,10 @@ if __name__ == '__main__':
     meatballSpawnDelay = 1
     meatballMaxSpawnRate = 3
     meatballSpawned = time.time()
+    meatBallRadius = int(screensize[1] / 100)
+    meatBallMinSpeed = int(screensize[1] / 54)
+    meatBallMaxSpeed = int(screensize[1] / 36)
     firstDetection = False
-
-    # Get screen info
-    user32 = ctypes.windll.user32
-    user32.SetProcessDPIAware()
-    screensize = user32.GetSystemMetrics(0), user32.GetSystemMetrics(1)
 
     # Get video capture
     cap = cv.VideoCapture(1)  # Change to 0 to use the built-in camera
@@ -82,7 +85,7 @@ if __name__ == '__main__':
 
         if time.time() - meatballSpawned > meatballSpawnDelay:
             for i in range(random.randint(1, meatballMaxSpawnRate)):
-                meatballs.append(Meatball(len(img[0])))
+                meatballs.append(Meatball(len(img[0]), meatBallRadius, meatBallMinSpeed, meatBallMaxSpeed))
             meatballSpawned = time.time()
 
         # Show frame
