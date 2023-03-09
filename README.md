@@ -13,3 +13,8 @@ To use your computer's built-in camera, change the line ``cap = cv.VideoCapture(
 A demo:
 
 https://user-images.githubusercontent.com/61016553/224127748-ec0880f5-c8d3-4af7-b2d1-e456e9659a8b.mp4
+
+## Sources
+- [How to Detect Objects in Real-Time Using OpenCV and Python](https://towardsdatascience.com/how-to-detect-objects-in-real-time-using-opencv-and-python-c1ba0c2c69c0)
+- [OpenCV-Python Tutorials](https://docs.opencv.org/4.x/d6/d00/tutorial_py_root.html)
+
