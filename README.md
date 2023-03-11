@@ -1,6 +1,6 @@
-# OpenCV-Python
+# Python Computer Vision
 
-Exploring some of the features in the OpenCV-Python package. This repo consists of a number of small projects that all use OpenCV in different ways. The projects are described in chronological order below.
+Exploring the posibilities of real-time object detection as a way to control an application, using computer vision packages in Python. The projects described below are in chronological order to make some of the progress clearer.
 
 ## Cloudy With A Chance Of Meatballs
 
@@ -40,9 +40,18 @@ A high ``param2`` of around 90 to 100 produced almost no false positives but nat
 
 To make matters worse, detection of the circles always failed once the object moved even slightly, making it useless as a pointer.
 
-In conclusion, circle detection seems to not be the right fit for use as a pointer. It would be better to stick to objects with a lot more clearly defined features, like a face. Facial detection worked a lot better (see [this project](https://github.com/BrentGG/OpenCV-Python#cloudy-with-a-chance-of-meatballs)) than circle detection, but of course it would be unusual to use one's face as a pointer. If a cascade file can be found for hand detection, this might be a better fit. 
+In conclusion, circle detection seems to not be the right fit for use as a pointer. It would be better to stick to objects with a lot more clearly defined features, like a face. Facial detection worked a lot better (see [this project](https://github.com/BrentGG/OpenCV-Python#cloudy-with-a-chance-of-meatballs)) than circle detection, but of course it would be unusual to use one's face as a pointer. If a cascade file can be found for hand detection, this might be a better fit.
+
+## Hand Detection using OpenCV
+
+TODO
+
+## Mouse Hands
+
+TODO
 
 ## Sources
 - [How to Detect Objects in Real-Time Using OpenCV and Python](https://towardsdatascience.com/how-to-detect-objects-in-real-time-using-opencv-and-python-c1ba0c2c69c0)
-- [OpenCV-Python Tutorials](https://docs.opencv.org/4.x/d6/d00/tutorial_py_root.html)
+- [OpenCV-Python tutorials](https://docs.opencv.org/4.x/d6/d00/tutorial_py_root.html)
+- [Mediapipe documentation](https://google.github.io/mediapipe/)
 
